@@ -1,0 +1,531 @@
+/*3D Cube on homepage*/
+/*Copyright (c) 2020 by Jordan Leigh (https://codepen.io/jordizle/pen/haIdo)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+   */
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  background: #f9f9f9;
+  font-family: 'monospace', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-weight: 300; 
+  margin: 0;
+  position:relative;
+}
+
+
+.viewport {
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -ms-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+  -webkit-perspective-origin: 50% 200px;
+  -moz-perspective-origin: 50% 200px;
+  -ms-perspective-origin: 50% 200px;
+  -o-perspective-origin: 50% 200px;
+  perspective-origin: 50% 200px;
+  -webkit-transform: scale(0.8, 0.8);
+  -moz-transform: scale(0.8, 0.8);
+  -ms-transform: scale(0.8, 0.8);
+  -o-transform: scale(0.8, 0.8);
+  transform: scale(0.8, 0.8);
+  }
+
+.cube {
+  position: relative;
+  margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: rotateX(136deg) rotateY(1122deg);
+  -moz-transform: rotateX(136deg) rotateY(1122deg);
+  -ms-transform: rotateX(136deg) rotateY(1122deg);
+  -o-transform: rotateX(136deg) rotateY(1122deg);
+  transform: rotateX(136deg) rotateY(1122deg); }
+
+.cube > div {
+  overflow: hidden;
+  position: absolute;
+  opacity: 0.9;
+  height: 200px;
+  width: 200px;
+  background-image: url("https://jordizle.com/static/img/codepen/blank.png");
+  -webkit-touch-callout: none;
+  -moz-touch-callout: none;
+  -ms-touch-callout: none;
+  -o-touch-callout: none;
+  touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+
+.cube > div > div.cube-image {
+  width: 200px;
+  height: 200px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  line-height: 200px;
+  text-align: center;
+  color: #000;
+  -webkit-transition: color 600ms;
+  -moz-transition: color 600ms;
+  -ms-transition: color 600ms;
+  -o-transition: color 600ms;
+  transition: color 600ms; }
+  .cube > div > div.cube-image.active {
+    color: #000; }
+
+.cube > div:hover {
+  cursor: pointer; }
+
+.cube > div:active {
+  cursor: pointer; }
+
+.cube > div:first-child {
+  -webkit-transform: rotateX(90deg) translateZ(100px);
+  -moz-transform: rotateX(90deg) translateZ(100px);
+  -ms-transform: rotateX(90deg) translateZ(100px);
+  -o-transform: rotateX(90deg) translateZ(100px);
+  transform: rotateX(90deg) translateZ(100px);
+  outline: 1px solid transparent; }
+
+.cube > div:nth-child(2) {
+  -webkit-transform: translateZ(100px);
+  -moz-transform: translateZ(100px);
+  -ms-transform: translateZ(100px);
+  -o-transform: translateZ(100px);
+  transform: translateZ(100px);
+  outline: 1px solid transparent; }
+
+.cube > div:nth-child(3) {
+  -webkit-transform: rotateY(90deg) translateZ(100px);
+  -moz-transform: rotateY(90deg) translateZ(100px);
+  -ms-transform: rotateY(90deg) translateZ(100px);
+  -o-transform: rotateY(90deg) translateZ(100px);
+  transform: rotateY(90deg) translateZ(100px);
+  outline: 1px solid transparent; }
+
+.cube > div:nth-child(4) {
+  -webkit-transform: rotateY(180deg) translateZ(100px);
+  -moz-transform: rotateY(180deg) translateZ(100px);
+  -ms-transform: rotateY(180deg) translateZ(100px);
+  -o-transform: rotateY(180deg) translateZ(100px);
+  transform: rotateY(180deg) translateZ(100px);
+  outline: 1px solid transparent; }
+
+.cube > div:nth-child(5) {
+  -webkit-transform: rotateY(-90deg) translateZ(100px);
+  -moz-transform: rotateY(-90deg) translateZ(100px);
+  -ms-transform: rotateY(-90deg) translateZ(100px);
+  -o-transform: rotateY(-90deg) translateZ(100px);
+  transform: rotateY(-90deg) translateZ(100px);
+  outline: 1px solid transparent; }
+
+.cube > div:nth-child(6) {
+  -webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(100px);
+  -moz-transform: rotateX(-90deg) rotate(180deg) translateZ(100px);
+  -ms-transform: rotateX(-90deg) rotate(180deg) translateZ(100px);
+  -o-transform: rotateX(-90deg) rotate(180deg) translateZ(100px);
+  transform: rotateX(-90deg) rotate(180deg) translateZ(100px);
+  outline: 1px solid transparent; }
+
+object {
+  opacity: 0.5; }
+
+object:hover {
+  opacity: 1; }
+
+@media (max-width: 640px) {
+  .viewport {
+    -webkit-transform: scale(0.8, 0.8);
+    -moz-transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    -o-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8); } }
+
+select{
+    scrollbar-width: none; /*For Firefox*/;
+    -ms-overflow-style: none;  /*For Internet Explorer 10+*/;
+}
+
+select:-webkit-scrollbar { /*For WebKit Browsers*/
+    width: 0;
+    height: 0;
+} 
+
+
+/*My Stuff Added / Changed on 3D cube*/
+  .cube-image, .cube-image .active {
+      font-family: monospace !important; 
+  }
+
+#wrapper {
+    margin: auto;
+    display: block;
+    margin-top: 20px;  
+} 
+
+html, body {width: auto!important;  overflow-x: hidden!important}  
+
+ #company_name, #first_name {
+  width: 150px;
+}
+
+select, input {
+ font-size: 16px;
+} 
+
+option {
+  font-size: 14px; 
+  font-family: 'monospace', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-weight: 300; 
+}
+
+#submit-it {
+  margin-top:100px;
+  text-align:center;
+  width: 100%;
+  background: black;
+  color:white;
+  height: 40px; 
+  font-size: 18px; 
+  font-weight:600; 
+  font-family: monospace; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+   appearance: none;
+   border-radius: 0;
+   visibility: hidden;
+}
+
+.side span {
+  position:absolute;
+  top: 120px;
+  text-align:center;
+  width: 100%; 
+  font-weight:bold; 
+   -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+
+.am-pm{
+  position:absolute;
+  top: 66px;
+  left: 15%; 
+  z-index: 2222222;
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+
+.this-james{
+
+  width: 150px;
+  height: 150px;
+  top:26px;
+  position: absolute;
+  left:30px;
+  background-color: transparent;
+
+
+
+}
+
+.interests{
+
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left:1px;
+  background-color: transparent
+}
+
+
+#oracle {
+  margin-left: auto;
+  margin-right:auto; 
+  padding: 0px 20px 2px 20px;
+}
+
+h1 {
+  background: black;
+  width: 230px;
+  color:white;
+  margin:auto;
+  padding-left: 4px;
+  padding-right: 3px; 
+}
+
+h2 {
+  padding: 20px 0px 0px 0px;
+}
+
+#response-case {
+text-align:center;
+margin: auto;
+  width: 65%;
+  color: white;
+  display:none;
+}
+
+#response-case p {
+  padding-bottom:10px;
+}
+
+.entry_text, span, p, label, option, select, input, h2, h3{
+  font-family: monospace !important;
+}
+
+p, span, label, input {
+  font-size: 16px;
+} 
+
+.entry_text {
+  max-width:820px;
+  text-align:center;
+  margin:auto; 
+  position: relative; 
+  padding-left: 14px;
+  padding-right:14px;
+}
+ 
+.flex-container {  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+  align-items:center;
+  padding-bottom:20px;
+}
+
+#emp_description {
+  max-width: 400px;
+  margin-top:0px; 
+  position:relative; 
+}
+
+#emp_description_box::after {
+ display: block;
+  border: none;
+  width: 100%;
+  max-width: 70px;
+  height: 3px;
+  background: #fff;
+  content: '';
+    margin-top: 18px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.meme_box img{
+  max-width: 220px;
+  margin-top:8px; 
+}
+
+.wrapper-case { 
+    display: flex;
+    flex-wap: wrap;
+    flex-direction: column;
+}
+
+.fade-in {
+animation: fadeIn ease 3s;
+-webkit-animation: fadeIn ease 3.5s;
+-moz-animation: fadeIn ease 3s;
+-o-animation: fadeIn ease 3s;
+-ms-animation: fadeIn ease 3s;
+}
+     
+@keyframes fadeIn {
+0% {opacity:0;}
+  80% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+  80% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+  80% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+  80% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+  80% {opacity:0;}
+100% {opacity:1;} 
+}  
+
+.fade-out {
+animation: fadeOut ease 1s;
+-webkit-animation: fadeOut ease 1s;
+-moz-animation: fadeOut ease 1s;
+-o-animation: fadeOut ease 1s;
+-ms-animation: fadeOut ease 1s;
+}
+
+@keyframes fadeOut {
+100% {opacity:1;}
+0% {opacity:0;}
+}
+
+@-moz-keyframes fadeOut {
+100% {opacity:1;}
+0% {opacity:0;}
+}
+
+@-webkit-keyframes fadeOut {
+100% {opacity:1;}
+0% {opacity:0;}
+}
+
+@-o-keyframes fadeOut {
+100% {opacity:1;}
+0% {opacity:0;}
+}
+ 
+@-ms-keyframes fadeOut {
+100% {opacity:1;}
+0% {opacity:0;}
+} 
+
+.side span {
+  color: black; 
+}
+
+.meme_img {
+  border: 2px solid white;
+} 
+ 
+.entry_text, #wrapper { 
+    transition: all 1.5s;
+    -wenkit-transition: all 1.5s;  
+    -moz-transition: all 1.5s; 
+    -o-transition: all 1.5s;
+    -ms-transition: all 1.5s; 
+}
+
+.top_bar {
+  height: 119px; 
+  background:black;
+  margin-bottom:64px;
+  width: 100%;
+    display:flex;
+  align-items:center;
+  justify-content: space-between
+}
+
+.bottom_bar {
+height: 119px;  
+  background:black;
+  margin-top:44px; 
+    display:flex;
+  align-items:center;
+  justify-content: space-between
+}  
+
+.fa-twitter, .fa-mobile-alt, .fa-envelope, .fa-linkedin-in {
+  font-size:26px;
+  color:white; 
+}
+
+.phone-box, .link-box {
+  margin-left: 24px;  
+}
+ 
+.email-box, .twitter-box {
+  margin-right: 24px;
+}
+
+.phone-box::after {
+  content:'954.292.6847';
+  color:white;
+  font-family: monospace;
+  margin-left: 10px;
+  background:white;
+  color: black; 
+  padding:1px;
+opacity: 0;
+  transition: all 1.0s;
+    -wenkit-transition: all 1.0s;  
+    -moz-transition: all 1.0s; 
+    -o-transition: all 1.0s;
+    -ms-transition: all 1.0s; 
+}  
+ 
+.phone-box:hover::after {
+opacity: 1; 
+    transition: all 1.0s;
+    -wenkit-transition: all 1.0s;  
+    -moz-transition: all 1.0s;
+    -o-transition: all 1.0s;
+    -ms-transition: all 1.0s; 
+}
+  
+/*text must be 16px on inputs to stop form from zooming on mobile*/ 
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+  font-size: 16px !important;
+} 
+
+@media screen and (max-width: 450px)  {
+ .bottom_bar, .top_bar {
+   height: 62px;  
+  }    
+}   
+
+#wrapper, .viewport, #james_form, .cube, .side, .cube-image {
+  touch-action: none;
+}
+
+ 
