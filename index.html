@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="wrapper-case vertical-center">
+
+    <div class="entry_text">
+      <p>Welcome to my Link Cube!, my name is Peter O'Donnell <br> I am a final year computer science student studying at University College Dublin
+        <br> Spin the cube and click the images to access my Resume, LinkedIn and Github </p>
+    </div>
+
+    <div class="viewport">
+
+      <form id="james_form">
+        <div class="cube">
+          <div class="side">
+            <div class="cube-image"><img class="this-james" src="UCD_Logo.png"></div>
+          </div>
+          <div class="side">
+            <div class="cube-image"><img class="interests" src="Work_Experience.png"></div>
+          </div>
+          <div class="side">
+            <div class="cube-image"><a href="https://www.tutorialspoint.com/How-to-use-an-image-as-a-link-in-HTML"><img class="this-james" src="Resume_Logo.png"></a></div>
+          </div>
+          <div class="side">
+            <div class="cube-image"><a href="https://www.linkedin.com/in/odonnellpeter1999/"><img class="this-james" src="Linked_In_Logo.png"></a></div>
+          </div>
+          <div class="side">
+            <div class="cube-image"><img class="interests" src="interests.png"></div>
+          </div>
+          <div class="side">
+            <div class="cube-image"><a href="https://github.com/odonnellpeter1999"><img class="this-james" src="github_Logo.png"></a></div>
+          </div>
+        </div>
+        <input type="submit" id="submit-it" value="Submit">
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <div class="center">
+    <div id="response-case" class="fade-in">
+      <div id="oracle">
+
+        <h2 id="emp_name"></h2>
+        <h3 id="emp_tag"></h3>
+
+        <div class="flex-container">
+          <div id="emp_description_box">
+            <p id="emp_description"></p>
+          </div>
+          <div class="meme_box"><img class="meme_img" src=""></div>
+        </div>
+
+      </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
